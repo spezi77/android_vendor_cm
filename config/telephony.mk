@@ -18,6 +18,9 @@ PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
     WhisperPush
 
+# Enable CellBroadcastReceiver settings
+PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/phone
+
 # Mms depends on SoundRecorder for recorded audio messages
 PRODUCT_PACKAGES += \
     SoundRecorder

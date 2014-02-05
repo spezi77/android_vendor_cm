@@ -29,11 +29,7 @@ $(eval TARGET_BOOTANIMATION_NAME := $(shell \
 endef
 $(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
 
-ifeq ($(TARGET_BOOTANIMATION_HALF_RES),true)
-PRODUCT_BOOTANIMATION := vendor/cm/prebuilt/common/bootanimation/halfres/$(TARGET_BOOTANIMATION_NAME).zip
-else
 PRODUCT_BOOTANIMATION := vendor/cm/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip
-endif
 endif
 
 ifdef CM_NIGHTLY
@@ -64,14 +60,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dataroaming=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1
-
-# Thank you, please drive thru!
-PRODUCT_PROPERTY_OVERRIDES += persist.sys.dun.override=0
+    ro.build.selinux=0
 
 ifneq ($(TARGET_BUILD_VARIANT),eng)
 # Enable ADB authentication
-ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 endif
 
 # Copy over the changelog to the device
@@ -90,7 +83,14 @@ endif
 # init.d support
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit \
+    vendor/cm/prebuilt/common/etc/init.d/01sysctl:system/etc/init.d/01sysctl \
+    vendor/cm/prebuilt/common/etc/init.d/05mountext:system/etc/init.d/05mountext \
+    vendor/cm/prebuilt/common/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
+    vendor/cm/prebuilt/common/etc/init.d/20extgapps:system/etc/init.d/20extgapps \
+    vendor/cm/prebuilt/common/etc/bin/a2sd:system/bin/a2sd \
+    vendor/cm/prebuilt/common/etc/xbin/powertop:system/xbin/powertop \
+    vendor/cm/prebuilt/common/etc/xbin/zipalign:system/xbin/zipalign
 
 # userinit support
 PRODUCT_COPY_FILES += \
@@ -103,6 +103,11 @@ PRODUCT_COPY_FILES += \
 # CM-specific init file
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
+    
+# Compcache/Zram support
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/bin/compcache:system/bin/compcache \
+    vendor/cm/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
@@ -128,7 +133,7 @@ include vendor/cm/config/themes_common.mk
 PRODUCT_PACKAGES += \
     Development \
     LatinIME \
-    BluetoothExt
+    #BluetoothExt
 
 # Optional CM packages
 PRODUCT_PACKAGES += \
@@ -137,9 +142,10 @@ PRODUCT_PACKAGES += \
     libemoji
 
 # Custom CM packages
+    #Trebuchet \
+
 PRODUCT_PACKAGES += \
     Launcher3 \
-    Trebuchet \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
@@ -158,7 +164,6 @@ PRODUCT_PACKAGES += \
 
 # Extra tools in CM
 PRODUCT_PACKAGES += \
-    libsepol \
     openvpn \
     e2fsck \
     mke2fs \
@@ -219,11 +224,12 @@ endif
 # easy way to extend to add more packages
 -include vendor/extra/product.mk
 
+PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
 PRODUCT_VERSION_MAJOR = 11
 PRODUCT_VERSION_MINOR = 0
-PRODUCT_VERSION_MAINTENANCE = 0-RC0
+PRODUCT_VERSION_MAINTENANCE = 0-RC1
 
 # Set CM_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
 
@@ -300,8 +306,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 CM_DISPLAY_VERSION := $(CM_VERSION)
 
-ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),)
-ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),build/target/product/security/testkey)
+ifneq ($(DEFAULT_SYSTEM_DEV_CERTIFICATE),)
+ifneq ($(DEFAULT_SYSTEM_DEV_CERTIFICATE),build/target/product/security/testkey)
   ifneq ($(CM_BUILDTYPE), UNOFFICIAL)
     ifndef TARGET_VENDOR_RELEASE_BUILD_ID
       ifneq ($(CM_EXTRAVERSION),)
@@ -320,6 +326,6 @@ endif
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.display.version=$(CM_DISPLAY_VERSION)
 
--include $(WORKSPACE)/build_env/image-auto-bits.mk
+-include $(WORKSPACE)/hudson/image-auto-bits.mk
 
 -include vendor/cyngn/product.mk
