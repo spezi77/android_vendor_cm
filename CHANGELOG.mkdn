@@ -1,3 +1,72 @@
+AOSB KitKat v1.3.0
+
+Update to Android 4.4.2_r2 (KVT49L)
+Multi-user support for phones and tablets
+Sound: Volume panel timeout
+Sound: Live Volume Steps
+Sound: Add battery level around unlock ring
+Sound: add support for translucent volume panel
+RecentApp: force clear caches on longclick
+RecentApp: Improve UI Rotation and animation
+NavBar: Handle navbar heights correct on dpi changes
+NavBar: Fix landscape mode on tablet flo/grouper
+NavBar: add landscape height options for tablets
+Port: Omni New Battery Saver mode included what user do to saving the battery life
+SystemUI: time-context headers to the notification header
+time-context evening time
+SystemUI: Fix Quick pull
+SystemUI: Fix notification header disappearing on tablets
+SystemUI: fix volume panel more button transparency
+SystemUI: Make text color orange if BatteryMeter <15% 
+SystemUI: improve DessertCaseDream immersive mode exit
+SystemUI: Fix Screenshot rotation
+SystemUI: Fix led pulse for samsung devices
+Fix Xposed Backup Folder Location on dirty flash
+Expanded Desktop : Fix Left handed navbar during landscape mode
+LS Notifications: enable pocket mode and show always if activated
+Browser: Implement client-side incognito mode
+Settings: Multi-user support toggle in settings -> security
+Settings: ProgressBar Accelerate and Interpolator
+Settings: ProgressBar enable MirrorMode and Reversed if activated
+Settings: ProgressBar Add reset default option  
+Settings: Wakelock Blocker
+Settings: add CPU info overlay
+Settings: AOSB Full Simplified Chinese translations
+Settings: Build.prop Mods: Do some prereq's before showing options
+Settings: Automatically switch mobile network into what user choice and also disable mobile data IF wifi connected to an AP
+Settings: Automatically switch mobile network and disable mobile data IF battery low (battery level can configure)
+Settings: Support For Both GSM and CDMA devices
+Screen Recorder: check for supported video encoder resolutions.
+Screen Recorder: Fix lag !
+Add ContentLoadingProgressBar support from AOSP
+Contacts: Add support for import contacts to local phone storage
+QS: Fix up Wifi Display tile for screencasting and reenable it
+Dialer: Fix back (clear) icon colors on dark UI
+Sensor: Enable the motion accelerometer for screen orientation change
+Settings: statusbar reflect am/pm and clock color
+Base: large fixes Zygote descriptor leakage problem
+Camera2: tweak volume key zoom and cleanup
+Camera2: Fix Power Shutter Exception
+Camera2: add option to prevend autofocus cancel if preview stopped
+Camera2: actually fix ArrayAdapter on MoreSettingsPopup
+Camera2: AOSB Updated Simplified Chinese translations
+Mms: Fix timestamps layout_width
+Mms: Shrink the minimum bubble size
+Mms: Locate the timestamps outside of bubbles
+Mms: Remove send message gravity for RtL
+Mms: Allow text input field to expand up to 9 lines
+Mms: Fix received thumbnail size
+Mms: improved mms bubbles
+TRDS: Dark Mms again
+OmniSwitch: Update Chinese translations and other Languages by aosb team
+InCallUI: add decline and answer incoming call action on notifications
+PhoneWindowManager: add ability to use EdgeGestureService for system gestures.
+Move lockscreen buttons options to one place
+Add more new APNs
+Offical support for d2lte unified device
+Offical support for jflte unified device
+Offical support for hlte unified device
+
 AOSB KitKat 1.2.9
 
 AOSB Recent App iPhoney UI
