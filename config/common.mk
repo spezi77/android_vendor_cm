@@ -187,7 +187,8 @@ PRODUCT_PACKAGES += \
     procmem \
     procrank \
     ProBamStats \
-    OmniSwitch
+    OmniSwitch \
+    GPSOptimizer
 
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/su/su:system/xbin/su \
