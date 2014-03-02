@@ -227,6 +227,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/proprietary/lib/libjni_latinime.so:system/lib/libjni_latinime.so
 
+# Workaround - downgrade hostapd for fixing issue with wifi tethering
+PRODUCT_COPY_FILES += \
+    vendor/cm/proprietary/bin/hostapd:system/bin/hostapd \
+    vendor/cm/proprietary/bin/hostapd_cli:system/bin/hostapd_cli
+
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=1
 else
