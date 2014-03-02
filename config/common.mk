@@ -59,11 +59,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.com.android.dataroaming=false
 
+# Disable selinux
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=0
 
 ifneq ($(TARGET_BUILD_VARIANT),eng)
-# Enable ADB authentication
+# Disable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 endif
 
@@ -131,8 +132,9 @@ include vendor/cm/config/themes_common.mk
 
 # Required CM packages
 PRODUCT_PACKAGES += \
-    Development \
-    LatinIME \
+    Development
+    
+    #LatinIME \
     #BluetoothExt
 
 # Optional CM packages
@@ -142,20 +144,20 @@ PRODUCT_PACKAGES += \
     libemoji
 
 # Custom CM packages
-    #Trebuchet \
-
 PRODUCT_PACKAGES += \
     Launcher3 \
+    Trebuchet \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
-    CMWallpapers \
-    Apollo \
     CMFileManager \
     LockClock \
-    CMUpdater \
     CMFota \
     CMAccount
+
+    #CMUpdater \
+    #CMWallpapers \
+    #Apollo \
 
 # CM Hardware Abstraction Framework
 PRODUCT_PACKAGES += \
@@ -210,7 +212,20 @@ PRODUCT_PACKAGES += \
 # Terminal Emulator
 PRODUCT_COPY_FILES +=  \
     vendor/cm/proprietary/Term.apk:system/app/Term.apk \
-    vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
+    vendor/cm/proprietary/lib/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
+    
+# Copy NovaLauncher
+PRODUCT_COPY_FILES += \
+    vendor/cm/proprietary/NovaLauncher.apk:system/priv-app/NovaLauncher.apk
+
+# Google latinime
+PRODUCT_COPY_FILES += \
+    vendor/cm/proprietary/GoogleLatinIme.apk:system/app/GoogleLatinIme.apk \
+    vendor/cm/proprietary/lib/libjni_unbundled_latinimegoogle.so:system/lib/libjni_unbundled_latinimegoogle.so
+
+# Copy latinime for gesture typing
+PRODUCT_COPY_FILES += \
+    vendor/cm/proprietary/lib/libjni_latinime.so:system/lib/libjni_latinime.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=1
@@ -224,8 +239,11 @@ endif
 # easy way to extend to add more packages
 -include vendor/extra/product.mk
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
+
+# LatinIME english dictionary
+#PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
+#$(call inherit-product, vendor/cm/config/dictionaries/english.mk) 
 
 PRODUCT_VERSION_MAJOR = 11
 PRODUCT_VERSION_MINOR = 0

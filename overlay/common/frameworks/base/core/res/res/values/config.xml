@@ -23,5 +23,8 @@
     </string-array>
 
     <bool name="config_cellBroadcastAppLinks">true</bool>
+    
+    <!-- Device supports LED flashlight -->
+    <bool name="config_enableTorch">true</bool>
 
 </resources>
