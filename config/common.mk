@@ -188,7 +188,8 @@ PRODUCT_PACKAGES += \
     procrank \
     ProBamStats \
     OmniSwitch \
-    GPSOptimizer
+    GPSOptimizer \
+    AndroidKernelTweaker
 
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/su/su:system/xbin/su \
