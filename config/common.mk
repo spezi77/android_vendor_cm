@@ -186,7 +186,7 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_PACKAGES += \
     procmem \
     procrank \
-    ProBamStats \
+    AOSBStats \
     OmniSwitch \
     GPSOptimizer \
     AndroidKernelTweaker
@@ -321,10 +321,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.goo.version=$(PROBAM_GOO_VERSION)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.probamstats.url=http://stats.codexc.com \
-    ro.probamstats.name=ProBam \
-    ro.probamstats.version=$(PROBAM_VERSION_MAJOR) \
-    ro.probamstats.tframe=1
+    ro.romstats.url=http://stats.codexc.com/ \
+    ro.romstats.name=AOSB \
+    ro.romstats.version=$(PROBAM_VERSION_MAJOR) \
+    ro.romstats.tframe=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.probam.version=$(PROBAM_VERSION_MAJOR) \
