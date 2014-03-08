@@ -87,7 +87,7 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit \
     vendor/cm/prebuilt/common/etc/init.d/01sysctl:system/etc/init.d/01sysctl \
     vendor/cm/prebuilt/common/etc/init.d/05mountext:system/etc/init.d/05mountext \
-    vendor/cm/prebuilt/common/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
+    vendor/cm/prebuilt/common/etc/init.d/10apps2sd-redux:system/etc/init.d/10apps2sd \
     vendor/cm/prebuilt/common/etc/init.d/20extgapps:system/etc/init.d/20extgapps \
     vendor/cm/prebuilt/common/etc/bin/a2sd:system/bin/a2sd \
     vendor/cm/prebuilt/common/etc/xbin/powertop:system/xbin/powertop \
