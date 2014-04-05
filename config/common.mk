@@ -97,10 +97,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 
-# SELinux filesystem labels
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
-
 # CM-specific init file
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
@@ -220,11 +216,12 @@ PRODUCT_COPY_FILES += \
 
 # Google latinime
 PRODUCT_COPY_FILES += \
-    vendor/cm/proprietary/GoogleLatinIme.apk:system/app/GoogleLatinIme.apk \
+    #vendor/cm/proprietary/GoogleLatinIme.apk:system/app/GoogleLatinIme.apk \
     vendor/cm/proprietary/lib/libjni_unbundled_latinimegoogle.so:system/lib/libjni_unbundled_latinimegoogle.so
 
-# Copy latinime for gesture typing
+# Copy prebuilt latinime (thanks SlimRoms) and latinime lib to enable gesture typing
 PRODUCT_COPY_FILES += \
+    vendor/cm/proprietary/GoogleLatinIme.apk:system/app/LatinIME.apk \
     vendor/cm/proprietary/lib/libjni_latinime.so:system/lib/libjni_latinime.so
 
 # Workaround - downgrade hostapd for fixing issue with wifi tethering
@@ -334,14 +331,16 @@ ifneq ($(DEFAULT_SYSTEM_DEV_CERTIFICATE),build/target/product/security/testkey)
   ifneq ($(CM_BUILDTYPE), UNOFFICIAL)
     ifndef TARGET_VENDOR_RELEASE_BUILD_ID
       ifneq ($(CM_EXTRAVERSION),)
+        # Remove leading dash from CM_EXTRAVERSION
+        CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
         TARGET_VENDOR_RELEASE_BUILD_ID := $(CM_EXTRAVERSION)
       else
-        TARGET_VENDOR_RELEASE_BUILD_ID := -$(shell date -u +%Y%m%d)
+        TARGET_VENDOR_RELEASE_BUILD_ID := $(shell date -u +%Y%m%d)
       endif
     else
-      TARGET_VENDOR_RELEASE_BUILD_ID := -$(TARGET_VENDOR_RELEASE_BUILD_ID)
+      TARGET_VENDOR_RELEASE_BUILD_ID := $(TARGET_VENDOR_RELEASE_BUILD_ID)
     endif
-    CM_DISPLAY_VERSION=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)$(TARGET_VENDOR_RELEASE_BUILD_ID)
+    CM_DISPLAY_VERSION=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)
   endif
 endif
 endif
