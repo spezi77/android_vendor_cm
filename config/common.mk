@@ -221,7 +221,7 @@ PRODUCT_COPY_FILES += \
 
 # Copy prebuilt latinime (thanks SlimRoms) and latinime lib to enable gesture typing
 PRODUCT_COPY_FILES += \
-    vendor/cm/proprietary/GoogleLatinIme.apk:system/app/LatinIME.apk \
+    vendor/cm/proprietary/LatinIME.apk:system/app/LatinIME.apk \
     vendor/cm/proprietary/lib/libjni_latinime.so:system/lib/libjni_latinime.so
 
 # Workaround - downgrade hostapd for fixing issue with wifi tethering
