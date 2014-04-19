@@ -22,10 +22,12 @@ PRODUCT_COPY_FILES += \
 #PRODUCT_COPY_FILES += \
 #    $(LOCAL_PATH)/app/NovaLauncher.apk:system/priv-app/NovaLauncher.apk
 
-# Google latinime
+# Slim Latinime
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
     $(LOCAL_PATH)/lib/libjni_unbundled_latinimegoogle.so:system/lib/libjni_unbundled_latinimegoogle.so \
-    $(LOCAL_PATH)/app/GoogleLatinIme.apk:system/app/GoogleLatinIme.apk
+    $(LOCAL_PATH)/app/LatinIME.apk:system/app/LatinIME.apk
+#    $(LOCAL_PATH)/app/GoogleLatinIme.apk:system/app/GoogleLatinIme.apk
 
 # Workaround - downgrade hostapd for fixing issue with wifi tethering
 PRODUCT_COPY_FILES += \
