@@ -4,6 +4,9 @@ $(call inherit-product, vendor/cm/config/common.mk)
 # Bring in all video files
 $(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
 
+# Bring in Evervolv tools
+include vendor/cm/config/tools.mk
+
 # Include CM audio files
 include vendor/cm/config/cm_audio.mk
 

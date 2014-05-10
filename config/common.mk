@@ -34,15 +34,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.com.android.dataroaming=false
 
+# Disable selinux
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1
+    ro.build.selinux=0
 
 # Thank you, please drive thru!
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.dun.override=0
 
 ifneq ($(TARGET_BUILD_VARIANT),eng)
-# Enable ADB authentication
-ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
+# Disable ADB authentication
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 endif
 
 # Copy over the changelog to the device
@@ -128,8 +129,6 @@ PRODUCT_PACKAGES += \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
-    CMWallpapers \
-    Apollo \
     CMFileManager \
     LockClock \
     CMFota \
@@ -210,8 +209,7 @@ PRODUCT_COPY_FILES += \
 # ProBAM Updater and Xposed
 PRODUCT_COPY_FILES +=  \
     vendor/cm/proprietary/appsetting.apk:system/app/appsetting.apk \
-    vendor/cm/proprietary/xposed_installer.apk:system/app/xposed_installer.apk \
-    vendor/cm/proprietary/AosbOTA.apk:system/app/AosbOTA.apk
+    vendor/cm/proprietary/xposed_installer.apk:system/app/xposed_installer.apk
 
 
 # Terminal Emulator
