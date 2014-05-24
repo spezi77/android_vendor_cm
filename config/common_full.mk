@@ -1,6 +1,9 @@
 # Inherit common CM stuff
 $(call inherit-product, vendor/cm/config/common.mk)
 
+# Bring in Evervolv a2sd and init.d scripts
+include vendor/carbon/config/tools.mk 
+
 # Bring in all video files
 $(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
 
@@ -16,12 +19,10 @@ PRODUCT_PACKAGES += \
     HoloSpiralWallpaper \
     LiveWallpapers \
     LiveWallpapersPicker \
-    MagicSmokeWallpapers \
     NoiseField \
     PhaseBeam \
     VisualizationWallpapers \
     PhotoTable \
-    VoiceDialer \
     SoundRecorder
 
 PRODUCT_PACKAGES += \
@@ -31,6 +32,13 @@ PRODUCT_PACKAGES += \
     libvideoeditor_osal \
     libvideoeditor_videofilters \
     libvideoeditorplayer
+
+# Stagefright FFMPEG plugin
+PRODUCT_PACKAGES += \
+    libstagefright_soft_ffmpegadec \
+    libstagefright_soft_ffmpegvdec \
+    libFFmpegExtractor \
+    libnamparser
 
 # Extra tools in CM
 PRODUCT_PACKAGES += \

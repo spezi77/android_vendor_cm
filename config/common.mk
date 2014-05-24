@@ -86,12 +86,7 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
     vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit \
     vendor/cm/prebuilt/common/etc/init.d/01sysctl:system/etc/init.d/01sysctl \
-    vendor/cm/prebuilt/common/etc/init.d/05mountext:system/etc/init.d/05mountext \
-    vendor/cm/prebuilt/common/etc/init.d/10apps2sd-redux:system/etc/init.d/10apps2sd \
-    vendor/cm/prebuilt/common/etc/init.d/20extgapps:system/etc/init.d/20extgapps \
-    vendor/cm/prebuilt/common/etc/bin/a2sd:system/bin/a2sd \
-    vendor/cm/prebuilt/common/etc/xbin/powertop:system/xbin/powertop \
-    vendor/cm/prebuilt/common/etc/xbin/zipalign:system/xbin/zipalign
+    vendor/cm/prebuilt/common/etc/xbin/powertop:system/xbin/powertop
 
 # userinit support
 PRODUCT_COPY_FILES += \
@@ -101,11 +96,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
     
-# Compcache/Zram support
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bin/compcache:system/bin/compcache \
-    vendor/cm/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
-
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
     vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
@@ -123,16 +113,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
-# T-Mobile theme engine
-include vendor/cm/config/themes_common.mk
-
 # Required CM packages
 PRODUCT_PACKAGES += \
     Development
     
-    #LatinIME \
-    #BluetoothExt
-
 # Optional CM packages
 PRODUCT_PACKAGES += \
     VoicePlus \
@@ -150,10 +134,6 @@ PRODUCT_PACKAGES += \
     LockClock \
     CMFota \
     CMAccount
-
-    #CMUpdater \
-    #CMWallpapers \
-    #Apollo \
 
 # CM Hardware Abstraction Framework
 PRODUCT_PACKAGES += \
@@ -205,30 +185,6 @@ PRODUCT_PACKAGES += \
     Superuser \
     su
 
-# Terminal Emulator
-PRODUCT_COPY_FILES +=  \
-    vendor/cm/proprietary/Term.apk:system/app/Term.apk \
-    vendor/cm/proprietary/lib/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
-    
-# Copy NovaLauncher
-PRODUCT_COPY_FILES += \
-    vendor/cm/proprietary/NovaLauncher.apk:system/priv-app/NovaLauncher.apk
-
-# Google latinime
-PRODUCT_COPY_FILES += \
-    #vendor/cm/proprietary/GoogleLatinIme.apk:system/app/GoogleLatinIme.apk \
-    vendor/cm/proprietary/lib/libjni_unbundled_latinimegoogle.so:system/lib/libjni_unbundled_latinimegoogle.so
-
-# Copy prebuilt latinime (thanks SlimRoms) and latinime lib to enable gesture typing
-PRODUCT_COPY_FILES += \
-    vendor/cm/proprietary/LatinIME.apk:system/app/LatinIME.apk \
-    vendor/cm/proprietary/lib/libjni_latinime.so:system/lib/libjni_latinime.so
-
-# Workaround - downgrade hostapd for fixing issue with wifi tethering
-PRODUCT_COPY_FILES += \
-    vendor/cm/proprietary/bin/hostapd:system/bin/hostapd \
-    vendor/cm/proprietary/bin/hostapd_cli:system/bin/hostapd_cli
-
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=1
 else
@@ -249,7 +205,7 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
 PRODUCT_VERSION_MAJOR = 11
 PRODUCT_VERSION_MINOR = 0
-PRODUCT_VERSION_MAINTENANCE = 0-RC1
+PRODUCT_VERSION_MAINTENANCE = 0-RC0
 
 # Set CM_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
 
@@ -344,6 +300,9 @@ ifneq ($(DEFAULT_SYSTEM_DEV_CERTIFICATE),build/target/product/security/testkey)
   endif
 endif
 endif
+
+# by default, do not update the recovery with system updates
+PRODUCT_PROPERTY_OVERRIDES += persist.sys.recovery_update=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.display.version=$(CM_DISPLAY_VERSION)

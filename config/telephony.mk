@@ -15,6 +15,7 @@ PRODUCT_PACKAGES += \
     Mms \
     Stk \
     CellBroadcastReceiver \
+    VoiceDialer \
     WhisperPush
 
 # Enable CellBroadcastReceiver settings
