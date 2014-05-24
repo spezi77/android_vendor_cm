@@ -2,7 +2,7 @@
 $(call inherit-product, vendor/cm/config/common.mk)
 
 # Bring in Evervolv a2sd and init.d scripts
-include vendor/carbon/config/tools.mk 
+include vendor/cm/config/tools.mk 
 
 # Bring in all video files
 $(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
