@@ -113,6 +113,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
+# Theme engine
+include vendor/cm/config/themes_common.mk
+
 # Required CM packages
 PRODUCT_PACKAGES += \
     Development
