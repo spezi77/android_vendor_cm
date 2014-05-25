@@ -86,7 +86,7 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
     vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit \
     vendor/cm/prebuilt/common/etc/init.d/01sysctl:system/etc/init.d/01sysctl \
-    vendor/cm/prebuilt/common/etc/xbin/powertop:system/xbin/powertop
+    vendor/cm/prebuilt/common/xbin/powertop:system/xbin/powertop
 
 # userinit support
 PRODUCT_COPY_FILES += \
