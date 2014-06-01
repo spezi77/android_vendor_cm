@@ -19,11 +19,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bin/compcache:system/bin/compcache \
     $(LOCAL_PATH)/bin/handle_compcache:system/bin/handle_compcache
 
-# Workaround - downgrade hostapd for fixing issue with wifi tethering
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/bin/hostapd:system/bin/hostapd \
-    $(LOCAL_PATH)/bin/hostapd_cli:system/bin/hostapd_cli
-
 # Google latinime
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
@@ -41,3 +36,7 @@ PRODUCT_COPY_FILES +=  \
 # Copy NovaLauncher
 PRODUCT_COPY_FILES += \
     $(PROP_PATH)/NovaLauncher.apk:system/priv-app/NovaLauncher.apk
+
+# Copy Lowsoundfixer (thanks tytung)
+PRODUCT_COPY_FILES += \
+    $(PROP_PATH)/LowSoundFixer_v1.0.8.apk:system/app/LowSoundFixer.apk
