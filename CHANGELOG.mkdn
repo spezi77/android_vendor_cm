@@ -1,3 +1,109 @@
+AOSB KitKat v1.3.3
+
+Base: PA PEEK Notification
+Base: PA PEEK wake timeout && configurable timeout
+Base: SmoothProgressBar: update to v0.4.0
+Base: Volumepanel: always show option icon
+Base: Fix STE "OK Google"
+Base: Add support for multiple storage configurations
+Base: UserTile: Fix SystemUI force close
+Base: Launch floating notifications from notification panel (long click)
+Base: Fix setup wizards force close
+Base: Download: add to support pause/resume download by manual
+Base: fonts: Add LBhashitaComplexSans font for Sinhala
+Base: Active display bugfixes
+Base: Fix SystemUI because Activedisplay
+Base: Squash: Memory leaks, NPEs, races and optimizations for fw/base
+Base: fix LTE toggle
+Base: On-The-Go: Turn stop and start service if screen turns off and on
+Base: On-The-Go: Toggle flashlight when shaking
+Base:  Battery saver mode updates
+Vendor: update App Settings to latest version (1.9)
+Vendor: update Xposed Installer to latest version (2.6.1)
+AOSB Recents: Launch as Floating App
+AOSB Recents: Fix the memory leak and more
+AOSB Recents: reduce memory usage
+AOSB Recents: Improvement thumbnail size also on landscape mode
+AOSB Recents: Attach the default thumbnail size for solutions not conflict with slim recents
+AOSB Recents: Fix possible crash
+ThemeEngine: New CM Theme Engine
+ThemeEngine: Add new themes items to personalization menu
+ThemeEngine: Lockscreen custom wallpaper
+ThemeEngine: add Custom Lockscreen switch
+ThemeEngine: Add wallpaper pickers to seperate package
+Settings: enable QuickBoot Settings UI
+Settings: Add blacklist provider permission
+Settings: On-The-Go Tile
+Settings: PEEK wake timeout
+Settings: PEEK configurable pickup timeout
+Settings: Don't Hide navigation bar category
+Settings: Peek wake timeout
+Settings: Add Slim Recents Warning
+Settings: Add option to enable/disable navring
+Settings: Navigation bar width & height
+Settings: Add navbar enablement for hw key devices
+Settings: Mirroring layout on RTL languages 
+Settings: Add screen color settings
+Settings: Wifi :: Add support for Ad-hoc (IBSS) networks
+Settings: Fix VoiceWakeup settings crash
+Settings: Show "Eject card" for usb storage
+Settings: Display BTH connected status correctly
+Settings: Apply Processor settings to all cpus
+Settings: Increase allowed duration to connect to a profile
+Settings: Fixes error message during pairing of HOGP devices
+Settings: Add missing mdpi, hdpi, xhdpi drawables for new theme engine
+Settings: Accept all files" option for incoming files via Bluetooth
+Settings: add equalizer tile toggle
+Settings: PowerMenu :: On-The-Go Mode
+Settings: Option to enable Notification Light when screen is on
+Settings: Pumping missing icons mdpi, hdpi, xhdpi drawables for AOSB
+Settings: Follow Xposed 2.6.x
+Mms: QuickMessagePopup: pager fix on multiple messages.
+Mms: Implement SMS mark for unread
+Mms: Enable link to Cell broadcast activity forcibly
+Bluetooth: Release pan proxy object while coming out from tethering menu
+Bluetooth: Improve sending web link with Bluetooth
+Bluetooth: Fix crash when sending SMS from handset instead of MAP
+Bluetooth: add "Accept all files" option for incoming files via Bluetooth
+Dialer: Landscape support
+Dialer (MSIM): display all IMEI/MEID for *#06#
+Dialer: Add support for OpenCNAM paid accounts
+Dialer: restore full compatibility with theme chooser
+LockClock: do not use GPS if Play Services is available
+Camera2: Fix camera application memory leak
+Camera2: Fix default slow shutter option
+Camera2: Prevent autofocus when video snapshot is in progress
+Camera2: Disable ZSL for slow shutter shots
+Camera2: Add 50MP, 37.5MP resolution entry
+Camera: Fix JPEG quality DB update
+DeskClock: Add feature to play random song as an alarm.
+DeskClock: Support double-digit hours for timers
+Kerneltweaker: Add TRDS (Dark-UI)
+Kerneltweaker: add Power key suspend/Wake Timeout option
+Kerneltweaker: MSM Mpdecision Control
+Apollo: Avoid crash when attempting to load many items
+Apollo: Use correct preference keys for artwork download
+Telephony:Fix MSIM Network Settings 
+Telephony:Reform toggleLTE is required in order for CM
+Telephony: Fix network selection array
+Telephony:actually fix LTE toggle
+Telephony:Fix crash in network mode settings
+Telephony:Fix mounting of ext4 formated sdcards
+Torch: toggle on/off once
+update Trebuchet , CMFileManager
+hlte: Update blobs
+jflte: update adreno
+jflte: remove old rilblobs
+hlte: Use camera wrapper.
+d802: Enforce known good ADSP images
+g2: Updated bcmdhd firmware
+mako: Add dxhdcp implementation
+g2: Update sensors HAL
+g2: Update Adreno
+v500: Updated adreno
+Samsung devices: add another camera firmware binary
+Fix Etisalat UAE, TalkTalk,QUAM APNs
+
 AOSB KitKat v1.3.0
 
 Update to Android 4.4.2_r2 (KVT49L)
