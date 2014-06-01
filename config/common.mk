@@ -121,7 +121,6 @@ PRODUCT_PACKAGES += \
     libemoji
 
 PRODUCT_PACKAGES += \
-    #Launcher3 \
     Trebuchet \
     DSPManager \
     libcyanogen-dsp \
@@ -307,9 +306,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.cmlegal.url=http://www.cyanogenmod.org/docs/privacy
 
 # Add PROBAM version
-PROBAM_VERSION_MAJOR = 1.3.2
+PROBAM_VERSION_MAJOR = 1.3.3
 PROBAM_VERSION_MINOR = stable
-PROBAM_GOO_VERSION = 132
+PROBAM_GOO_VERSION = 133
 VERSION := $(PROBAM_VERSION_MAJOR)_$(PROBAM_VERSION_MINOR)
 PROBAM_VERSION := $(VERSION)_$(shell date +%Y%m%d-%H%M%S)
 
