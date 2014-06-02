@@ -3,7 +3,7 @@ LOCAL_PATH:= vendor/cm/prebuilt/common
 # Utilize init.d scripts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/etc/init.d/05mountext:system/etc/init.d/05mountext \
-    $(LOCAL_PATH)/etc/init.d/10apps2sd-redux:system/etc/init.d/10apps2sd \
+    $(LOCAL_PATH)/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
     $(LOCAL_PATH)/etc/init.d/20extgapps:system/etc/init.d/20extgapps
 
 # Apps2sd files
@@ -23,7 +23,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
     $(LOCAL_PATH)/lib/libjni_unbundled_latinimegoogle.so:system/lib/libjni_unbundled_latinimegoogle.so \
 
-# Workaround - downgrade hostapd for fixing issue with wifi tethering
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/bin/hostapd:system/bin/hostapd \
-    $(LOCAL_PATH)/bin/hostapd_cli:system/bin/hostapd_cli
+# Copy LowSoundFixer
+#PRODUCT_COPY_FILES += \
+    vendor/cm/proprietary/LowSoundFixer_v1.0.8.apk:system/priv-app/LowSoundFixer_v1.0.8.apk
