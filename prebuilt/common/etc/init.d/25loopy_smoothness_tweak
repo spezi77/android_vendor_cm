@@ -6,7 +6,7 @@ if $loopy_smooth; then
 for n in 1 2
 do
 
-  USER_LAUNCHER="ApexLauncher.apk"	# Change this to your launcher app
+  #USER_LAUNCHER="ApexLauncher.apk"	# Change this to your launcher app
 
   NUMBER_OF_CHECKS=0					# Total number of rechecks before ending 1st loop
   SLEEP_TIME=0						# Number of seconds between rechecking processes
@@ -55,7 +55,7 @@ do
     if [ $PROCESS_2 -eq "0" ]; then PNAME="com.android.systemui"; NICELEVEL=-18; if [ `pidof $PNAME` ]; then renice $NICELEVEL `pidof $PNAME`; PROCESS_2=1; P_CHECK=`expr $P_CHECK + 1`; fi; fi;
     if [ $PROCESS_3 -eq "0" ]; then PNAME="com.android.settings"; NICELEVEL=-18; if [ `pidof $PNAME` ]; then renice $NICELEVEL `pidof $PNAME`; PROCESS_3=1; P_CHECK=`expr $P_CHECK + 1`; fi; fi;
     if [ $PROCESS_4 -eq "0" ]; then PNAME="com.swype.android.inputmethod"; NICELEVEL=-18; if [ `pidof $PNAME` ]; then renice $NICELEVEL `pidof $PNAME`; PROCESS_4=1; P_CHECK=`expr $P_CHECK + 1`; fi; fi;
-    if [ $PROCESS_5 -eq "0" ]; then PNAME="$USER_LAUNCHER"; NICELEVEL=-18; if [ `pidof $PNAME` ]; then renice $NICELEVEL `pidof $PNAME`; PROCESS_5=1; P_CHECK=`expr $P_CHECK + 1`; fi; fi;
+    # if [ $PROCESS_5 -eq "0" ]; then PNAME="$USER_LAUNCHER"; NICELEVEL=-18; if [ `pidof $PNAME` ]; then renice $NICELEVEL `pidof $PNAME`; PROCESS_5=1; P_CHECK=`expr $P_CHECK + 1`; fi; fi;
     if [ $PROCESS_6 -eq "0" ]; then PNAME="com.android.vending"; NICELEVEL=-18; if [ `pidof $PNAME` ]; then renice $NICELEVEL `pidof $PNAME`; PROCESS_6=1; P_CHECK=`expr $P_CHECK + 1`; fi; fi;
     if [ $PROCESS_7 -eq "0" ]; then PNAME="com.android.mms"; NICELEVEL=-19; if [ `pidof $PNAME` ]; then renice $NICELEVEL `pidof $PNAME`; PROCESS_7=1; P_CHECK=`expr $P_CHECK + 1`; fi; fi;
     if [ $PROCESS_8 -eq "0" ]; then PNAME="android.process.acore"; NICELEVEL=-3; if [ `pidof $PNAME` ]; then renice $NICELEVEL `pidof $PNAME`; PROCESS_8=1; P_CHECK=`expr $P_CHECK + 1`; fi; fi;
