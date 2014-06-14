@@ -1,3 +1,95 @@
+AOSB KitKat v1.3.5
+
+base: Protected App
+base: Fix On-The-Go Tile
+base: Add Battery/Power Saver Tile 
+base: New API From Mokee, phone number location support for chinese users
+base: listview: ensure active views are filled prior than scrap views
+base: Peek: Notification Helper fixes
+base: Fix animator display 
+base: Gesture Device Lock
+base: Second Clock
+base: Add support for Peek external app
+base: New Base Code for Active Display a lot of improvements
+base: Fix light notification color picker force close
+base: HOVER From PA
+base:CM Themes, Add support for composed icons
+base:CM Trebuchet, a lot of improvements
+base: AOSB RecentApp v2
+PS1: Fix the memory leak and more and reduce memory usage
+PS2: Improvement thumbnail size also on landscape mode
+PS3: Attach the default thumbnail size and prevent conflict with slim recents
+PS4: ability to switch between 3 modes of recents
+PS5: set height, width for each mode and each DPI
+PS6: add standard clear app icon , instead of ugly icon
+
+Settings: Launch only contacts picker for blacklist entry
+Settings: Apps, Add blacklist interface
+Settings: HALO, color customizations
+Settings: listview,fix force close
+Settings: Active Display, Double tap to sleep
+Settings: Active Display, Hide Low Priority, Hide Non Clearable and Quiet Hours
+Settings: Apps, Add black listed app for HOVER
+Settings: Apps, Add black listed app for Peek
+Settings: Gesture Lockscreen
+Settings: Update Active Display
+Settings: Add AOSB Support translations for hungarian 
+Settings: Fix FC "Settings - interface" on tablets like Flo
+Settings: Recent, Switcher bettwen App
+Settings: Recent, restart UI once in all cases
+Settings: Fix Battery light FC
+
+InCallUI: Hide Titlebar while loading InCallUI
+InCallUI: do not use reflection
+InCallUI: Store dialpad showing state
+InCallUI: fix location of answer ring on incoming call
+InCallUI: fix non-intrusive for RTL
+InCallUI: Dialpad key digit color TRDS update
+InCallUI: fix dialpad digits color while TRDS is on
+InCallUI: fix landscape layout
+
+Dialer: update TRDS for new 4.4.3 Dialer
+Dialer: Update landscape layout to match 4.4.3 codebase
+Dialer: Chinese Location Lookup
+Dialer: Hide shadow overlay for contact tiles with letter tile avatars
+Dialer: Fix force close if using chinese language
+
+n7100: fixes unexpacted random reboots 
+sc03e: remove bloatware and not currently in-use
+sc03e: add missing blob
+jflte: use new device tree and kernel
+hammerhead: use new device tree and kernel
+vendor: Added apn settings for Mobitel and Etisalat, Sri Lanka
+
+AOSB KitKat 1.3.4
+
+Merge tag ‘android-4.4.3_r1.1′ #KTU84L
+Merge tag ‘android-4.4.3_r1′
+Merge CM changes
+Battery consumption’s issues fixed 
+Stability issues patched
+Minor Dialer app redesign
+The Dialer app has a light color scheme instead of dark.
+rearrange contact cards in the Dialer.
+FLAC playback improved/fixed
+improved camera quality
+New Contacts , icons , …
+Performance improvement is incredible
+Fix resource leaks
+Fix hiding ADB notification
+Excessive battery drain issue
+more compatible with high resolution devices
+apn: national roaming for ONO (Spain)
+Settings: Import init.d.cfg and fix “fi unexpected”
+Enable KSM deferred timer for kernels supporting it
+Telephony: Add setting for WhitePages Canada reverse lookup provider
+Telephony: Add setting for YellowPages Canada reverse lookup provider
+pause downloads of large games from the Play Store
+appops: enforce appop for bluetooth disabled action
+mako: Update proprietary libs
+hammerhead: Update proprietary libs
+N7100: Update sensors libs
+
 AOSB KitKat v1.3.3
 
 Base: PA PEEK Notification
