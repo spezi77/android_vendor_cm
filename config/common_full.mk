@@ -22,7 +22,8 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     PhotoTable \
     VoiceDialer \
-    SoundRecorder
+    SoundRecorder \
+    PhotoPhase
 
 PRODUCT_PACKAGES += \
     VideoEditor \
