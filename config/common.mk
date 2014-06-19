@@ -137,7 +137,7 @@ PRODUCT_COPY_FILES += \
 
 # Copy libgif for Nova Launcher 3.0
 PRODUCT_COPY_FILES += \
-    vendor/slim/prebuilt/common/lib/libgif.so:system/lib/libgif.so
+    vendor/cm/prebuilt/common/lib/libgif.so:system/lib/libgif.so
 
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
