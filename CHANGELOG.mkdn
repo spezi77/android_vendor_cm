@@ -1,3 +1,49 @@
+AOSB KitKat v1.3.6
+
+Android Kitkat 4.4.4r1 KTU84P
+Merge CM Changes
+Update SuperSu to v2.00
+Base: iOS8, Bubble Recentes
+Bubble: re-work the activities
+Bubble: Fix NPE Fully and validate Contact ID/Image
+Bubble: check caller name if empty && calculate time duration
+Bubble: Make it optional
+Recent: Make it compatible with Holo Dark and Multi DPI
+Recent: Support landscape layout
+FastChargeTile: support m8
+Base: FastCharge & Touchpad Tile kernel feature toggle
+Base: Sleep Timer for Media Tile
+Base: Allow Power Notification Sounds For Wireless
+Base: Notification Reminder
+Base: Notification Reminder Interval
+Base: Notification Reminder New layout
+Themes: Use default_wallpaper for HOLO lockscreen wp
+Themes: Use first asset entry for lockscreen wallpaper
+PEEK: Sensors improvements
+HOVER: Option to exclude topmost app
+HOVER: notification timeout
+HOVER: New Settings
+HOVER: Improvements
+HOVER: Match notification width on tablets too
+HOVER: Theme Engine compatibilities
+Settings: add lockscreen themes in interface
+Settings: Pimp Custom Recent and Bubble Settings
+Settings: HTC Reflection Effect or iOS Flat
+Settings: Glowpad Torch
+Settings: Partition information menu
+Settings: Lockscreen Colors/Image
+Settings: Remove 'More device settings' menu
+Settings: Remove lockscreen slide delay option
+dlx: update adreno from qdevnet 24 June 14 KOT49H
+m8: add EasyAccessService
+m7vzw: update blobs from 4.10.605.3
+m7: Update proprietary files from Google Play edition
+toroplus: add blobs
+galaxysl: add blobs
+d801: Enforce known good ADSP images
+mako: Remove live wallpaper product entries
+mako: Remove libacdbloader makefile entry
+
 AOSB KitKat v1.3.5
 
 base: Protected App
