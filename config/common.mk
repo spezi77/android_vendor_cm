@@ -332,6 +332,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.probam.version=$(PROBAM_VERSION_MAJOR) \
+    ro.probam.gapps_url=http://probam.net/api/?device=gapps \
+    ro.probam.gapps_version=1.0.0 \
     ro.probamrom.version=probam_$(PROBAM_VERSION)
 
 -include vendor/cm-priv/keys/keys.mk
