@@ -128,7 +128,7 @@ PRODUCT_PACKAGES += \
     audio_effects.conf \
     CMFileManager \
     LockClock \
-    CMFota \
+    AOSBota \
     WhisperPush
 
 # CM Hardware Abstraction Framework
@@ -189,7 +189,6 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_PACKAGES += \
     procmem \
     procrank \
-    AOSBStats \
     OmniSwitch \
     GPSOptimizer \
     AndroidKernelTweaker
@@ -215,6 +214,7 @@ PRODUCT_COPY_FILES +=  \
     vendor/cm/proprietary/appsetting.apk:system/app/appsetting.apk \
     vendor/cm/proprietary/xposed_installer.apk:system/app/xposed_installer.apk \
     vendor/cm/proprietary/AosbOTA.apk:system/app/AosbOTA.apk \
+    vendor/cm/proprietary/AOSBStats.apk:system/app/AOSBStats.apk \
     vendor/cm/prebuilt/common/media/mokee-phoneloc.dat:system/media/mokee-phoneloc.dat
 
 # Terminal Emulator
@@ -312,9 +312,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.cmlegal.url=http://www.cyanogenmod.org/docs/privacy
 
 # Add PROBAM version
-PROBAM_VERSION_MAJOR = 1.3.5
+PROBAM_VERSION_MAJOR = 1.3.6
 PROBAM_VERSION_MINOR = stable
-PROBAM_GOO_VERSION = 135
+PROBAM_GOO_VERSION = 136
 VERSION := $(PROBAM_VERSION_MAJOR)_$(PROBAM_VERSION_MINOR)
 PROBAM_VERSION := $(VERSION)_$(shell date +%Y%m%d-%H%M%S)
 
@@ -331,6 +331,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.probam.version=$(PROBAM_VERSION_MAJOR) \
+    ro.probam.gapps_url=http://probam.net/api/?device=gapps \
+    ro.probam.gapps_version=1.0.0 \
     ro.probamrom.version=probam_$(PROBAM_VERSION)
 
 -include vendor/cm-priv/keys/keys.mk
