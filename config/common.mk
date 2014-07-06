@@ -128,7 +128,7 @@ PRODUCT_PACKAGES += \
     audio_effects.conf \
     CMFileManager \
     LockClock \
-    CMFota \
+    AOSBota \
     WhisperPush
 
 # CM Hardware Abstraction Framework
