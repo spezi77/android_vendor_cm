@@ -214,7 +214,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES +=  \
     vendor/cm/proprietary/appsetting.apk:system/app/appsetting.apk \
     vendor/cm/proprietary/xposed_installer.apk:system/app/xposed_installer.apk \
-    vendor/cm/proprietary/AosbOTA.apk:system/app/AosbOTA.apk \
     vendor/cm/proprietary/AOSBStats.apk:system/app/AOSBStats.apk \
     vendor/cm/prebuilt/common/media/mokee-phoneloc.dat:system/media/mokee-phoneloc.dat
 
