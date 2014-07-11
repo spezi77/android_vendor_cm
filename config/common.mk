@@ -130,6 +130,7 @@ PRODUCT_PACKAGES += \
     CMFileManager \
     LockClock \
     AOSBota \
+    EOSWeather \
     WhisperPush
 
 # CM Hardware Abstraction Framework
