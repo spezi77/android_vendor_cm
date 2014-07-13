@@ -202,6 +202,7 @@ PRODUCT_PACKAGES += \
     libscreenrecorder \
     BeanStalkPapers \
     BeanStalkOTA \
+    EOSWeather \
     Apollo \
     MonthCalendarWidget \
     LockClock \
