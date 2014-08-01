@@ -18,11 +18,18 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bin/compcache:system/bin/compcache \
     $(LOCAL_PATH)/bin/handle_compcache:system/bin/handle_compcache
 
-# Google latinime
+# Special SU files for htc bravo
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/xbin/sugote:system/xbin/sugote \
+    $(LOCAL_PATH)/xbin/sugote-mksh:system/xbin/sugote-mksh \
+    $(LOCAL_PATH)/su/.installed_su_daemon:system/etc/.installed_su_daemon \
+    $(LOCAL_PATH)/bin/.ext/.su:system/bin/.ext/.su
+
+# Slim's Latinime + lib for gesture typing
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
-    $(LOCAL_PATH)/lib/libjni_unbundled_latinimegoogle.so:system/lib/libjni_unbundled_latinimegoogle.so \
-
+    vendor/cm/proprietary/LatinIME.apk:system/app/LatinIME.apk
+    
 # Copy LowSoundFixer
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     vendor/cm/proprietary/LowSoundFixer_v1.0.8.apk:system/priv-app/LowSoundFixer_v1.0.8.apk
