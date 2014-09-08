@@ -207,6 +207,7 @@ PRODUCT_PACKAGES += \
     MonthCalendarWidget \
     LockClock \
     DashClock \
+    CMHome \
     StalkExplorer
 
 PRODUCT_PACKAGES += \
