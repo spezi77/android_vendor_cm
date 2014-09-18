@@ -272,9 +272,6 @@ PRODUCT_PACKAGES += \
     libFFmpegExtractor \
     libnamparser
 
-# easy way to extend to add more packages
--include vendor/extra/product.mk
-
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
@@ -340,3 +337,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
 -include vendor/cyngn/product.mk
+
+$(call inherit-product-if-exists, vendor/extra/product.mk)
