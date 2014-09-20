@@ -63,6 +63,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=0
 
+# Disable multithreaded dexopt by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.dalvik.multithread=false
+
+# Thank you, please drive thru!
+PRODUCT_PROPERTY_OVERRIDES += persist.sys.dun.override=0
+
 ifneq ($(TARGET_BUILD_VARIANT),eng)
 # Disable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
@@ -80,6 +87,10 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
     vendor/cm/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 endif
+
+# Signature compatibility validation
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/bin/otasigcheck.sh:system/bin/otasigcheck.sh
 
 # init.d support
 PRODUCT_COPY_FILES += \
@@ -135,7 +146,6 @@ PRODUCT_PACKAGES += \
     audio_effects.conf \
     CMFileManager \
     LockClock \
-    CMFota \
     CMAccount \
     CMHome
 
@@ -158,6 +168,9 @@ PRODUCT_PACKAGES += \
     mount.exfat \
     fsck.exfat \
     mkfs.exfat \
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs \
     ntfsfix \
     ntfs-3g \
     gdbserver \
@@ -204,9 +217,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=0
 
 endif
-
-# easy way to extend to add more packages
--include vendor/extra/product.mk
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
@@ -286,6 +296,7 @@ endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
+  ro.cm.releasetype=$(CM_BUILDTYPE) \
   ro.modversion=$(CM_VERSION) \
   ro.cmlegal.url=http://www.cyanogenmod.org/docs/privacy
 
@@ -321,3 +332,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 -include $(WORKSPACE)/hudson/image-auto-bits.mk
 
 -include vendor/cyngn/product.mk
+
+$(call inherit-product-if-exists, vendor/extra/product.mk)
