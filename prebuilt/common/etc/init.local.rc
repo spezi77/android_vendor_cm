@@ -2,8 +2,11 @@
 import /init.superuser.rc
 
 on init
+    export SD_EXT_DIRECTORY /sd-ext
+    mkdir /sd-ext 0771 system system
     export ANDROID_CACHE /cache
     export TERMINFO /system/etc/terminfo
+    export TERM linux
 
 on post-fs-data
     mkdir /cache/dalvik-cache 0771 system system
@@ -116,6 +119,15 @@ on property:service.adb.tcp.port=-1
 
 # sysinit (/system/etc/init.d)
 service sysinit /system/bin/sysinit
+    class late-start
     user root
+    group root
     oneshot
     disabled
+
+# Compcache - handle at boot
+service compcache /system/bin/handle_compcache
+    class main
+    user root
+    group root
+    oneshot
