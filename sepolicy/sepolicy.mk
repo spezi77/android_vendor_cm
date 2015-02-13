@@ -21,6 +21,7 @@ BOARD_SEPOLICY_UNION += \
     healthd.te \
     hostapd.te \
     installd.te \
+    mediaserver.te \
     netd.te \
     property.te \
     recovery.te \
@@ -31,6 +32,7 @@ BOARD_SEPOLICY_UNION += \
     system_app.te \
     ueventd.te \
     uncrypt.te \
+    userinit.te \
     vold.te \
     zygote.te \
     mac_permissions.xml
