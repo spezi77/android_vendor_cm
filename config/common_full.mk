@@ -1,9 +1,6 @@
 # Inherit common CM stuff
 $(call inherit-product, vendor/cm/config/common.mk)
 
-# Bring in custom init.d scripts
-include vendor/cm/config/tools.mk 
-
 # Include CM audio files
 include vendor/cm/config/cm_audio.mk
 
