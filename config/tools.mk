@@ -29,9 +29,9 @@ PRODUCT_COPY_FILES += \
     $(PROP_PATH)/LatinIME.apk:system/app/LatinIME.apk
 
 # Terminal Emulator
-PRODUCT_COPY_FILES +=  \
-    $(PROP_PATH)/Term.apk:system/app/Term.apk \
-    $(PROP_PATH)/lib/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
+#PRODUCT_COPY_FILES +=  \
+#    $(PROP_PATH)/Term.apk:system/app/Term.apk \
+#    $(PROP_PATH)/lib/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
     
 # Copy NovaLauncher
 PRODUCT_COPY_FILES += \
