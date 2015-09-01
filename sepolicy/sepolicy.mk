@@ -16,6 +16,7 @@ BOARD_SEPOLICY_UNION += \
     adbd.te \
     app.te \
     auditd.te \
+    akmd.te \
     bootanim.te \
     drmserver.te \
     healthd.te \
