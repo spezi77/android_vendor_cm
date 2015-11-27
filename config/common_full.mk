@@ -23,16 +23,16 @@ PRODUCT_PACKAGES += \
     PhaseBeam \
     VisualizationWallpapers \
     PhotoTable \
-    SoundRecorder \
+#    SoundRecorder \
     PhotoPhase
 
-PRODUCT_PACKAGES += \
-    VideoEditor \
-    libvideoeditor_jni \
-    libvideoeditor_core \
-    libvideoeditor_osal \
-    libvideoeditor_videofilters \
-    libvideoeditorplayer
+#PRODUCT_PACKAGES += \
+#    VideoEditor \
+#    libvideoeditor_jni \
+#    libvideoeditor_core \
+#    libvideoeditor_osal \
+#    libvideoeditor_videofilters \
+#    libvideoeditorplayer
 
 # Extra tools in CM
 PRODUCT_PACKAGES += \
