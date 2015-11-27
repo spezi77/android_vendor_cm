@@ -7,6 +7,10 @@ Visit http://review.cyanogenmod.org for our Gerrit instance.
 
 CHANGELOG (notable new features)
 ---------
+### 11.0.0 Stagefright 2.0 Patched
+* Common: Android 4.4.4 (Google)
+* Fix all known security vulnerabilities with Android Security Patch Level of November 1, 2015 (for more details visit https://groups.google.com/forum/#!topic/android-security-updates/GwZn7sixask)
+
 ### 11.0.0 M12
 * Common: Android 4.4.4 (Google)
 * Fix the POODLE vulnerability in SSLv3
