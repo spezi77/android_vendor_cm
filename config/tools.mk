@@ -40,3 +40,10 @@ PRODUCT_COPY_FILES += \
 # Copy Lowsoundfixer (thanks tytung)
 PRODUCT_COPY_FILES += \
     $(PROP_PATH)/LowSoundFixer_v1.0.8.apk:system/app/LowSoundFixer.apk
+
+# KernelTweaker
+PRODUCT_PACKAGES += \
+    KernelTweaker
+PRODUCT_COPY_FILES += \
+    $(PROP_PATH)/KernelTweaker.apk:system/priv-app/KernelTweaker.apk
+
