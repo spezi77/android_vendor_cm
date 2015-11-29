@@ -28,6 +28,9 @@ fi
 OPTICHARGER="$ANDROID_BUILD_TOP"/vendor/cm/tools/opticharger
 QUIET=-q
 DELETE_BINS="applypatch applypatch_static check_prereq recovery updater"
+DELETE_LIBS="libc_malloc_debug_leak.so libc_malloc_debug_qemu.so"
+DELETE_FONTS="MTLmr3m.ttf NanumGothic.tff DroidSansFallback.ttf Padauk-book.ttf Padauk-bookbold.ttf"
+DELETE_MEDIA="*.qmg"
 
 # Optimize PNG resources in APKs
 ( cd "$OUT"/system; find framework/ app/ priv-app/ vendor/app/ -name \*.apk -print | $XARGS "$OPTICHARGER"; )
@@ -37,5 +40,30 @@ DELETE_BINS="applypatch applypatch_static check_prereq recovery updater"
 
 # We should fix the build to stop this from being installed in the first place
 rm -rf "$OUT"/system/extras
+
+# Delete unnecessary libraries
+( cd "$OUT"/system/lib; echo $DELETE_LIBS | xargs rm -f; )
+
+# Delete Offline charging mode files
+( cd "$OUT"/system/media; echo $DELETE_MEDIA | xargs rm -f; )
+
+# No need for modem.bin
+rm -f "$OUT"/modem.bin
+
+# No need for media/video
+rm -rf "$OUT"/system/media/video
+
+# Delete Unnecessary Fonts
+( cd "$OUT"/system/fonts; echo $DELETE_FONTS | xargs rm -f; )
+
+# No need for tts
+rm -rf "$OUT"/system/tts
+
+# No need for srec
+rm -rf "$OUT"/system/usr/srec
+
+# No need for recovery
+rm -rf "$OUT"/recovery
+rm -rf "$OUT"/system/etc/recovery-resource.dat
 
 exit 0
