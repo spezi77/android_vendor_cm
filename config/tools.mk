@@ -21,21 +21,19 @@ PRODUCT_COPY_FILES += \
 
 # Google latinime
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
-    $(LOCAL_PATH)/lib/libjni_unbundled_latinimegoogle.so:system/lib/libjni_unbundled_latinimegoogle.so
+    $(LOCAL_PATH)/lib/libjni_latinime.so:system/lib/libjni_latinime.so
 
 # Slim's prebuilt Latinime
 PRODUCT_COPY_FILES += \
     $(PROP_PATH)/LatinIME.apk:system/app/LatinIME.apk
-
-# Terminal Emulator
-#PRODUCT_COPY_FILES +=  \
-#    $(PROP_PATH)/Term.apk:system/app/Term.apk \
-#    $(PROP_PATH)/lib/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
     
 # Copy NovaLauncher
 PRODUCT_COPY_FILES += \
     $(PROP_PATH)/NovaLauncher.apk:system/priv-app/NovaLauncher.apk
+
+# Copy GalleryGoogle
+PRODUCT_COPY_FILES += \
+    $(PROP_PATH)/GalleryGoogle.apk:system/priv-app/GalleryGoogle.apk
 
 # Copy Lowsoundfixer (thanks tytung)
 PRODUCT_COPY_FILES += \
@@ -46,4 +44,8 @@ PRODUCT_PACKAGES += \
     KernelTweaker
 PRODUCT_COPY_FILES += \
     $(PROP_PATH)/KernelTweaker.apk:system/priv-app/KernelTweaker.apk
+
+# Copy slim version of LockClock.apk
+PRODUCT_COPY_FILES += \
+    $(PROP_PATH)/LockClock.apk:system/app/LockClock.apk
 
