@@ -28,42 +28,124 @@ fi
 OPTICHARGER="$ANDROID_BUILD_TOP"/vendor/cm/tools/opticharger
 QUIET=-q
 DELETE_BINS="applypatch applypatch_static check_prereq recovery updater"
-DELETE_LIBS="libc_malloc_debug_leak.so libc_malloc_debug_qemu.so"
-DELETE_FONTS="MTLmr3m.ttf NanumGothic.tff DroidSansFallback.ttf Padauk-book.ttf Padauk-bookbold.ttf"
-DELETE_MEDIA="*.qmg"
+DELETE_LIBS="libc_malloc_debug_leak.so libc_malloc_debug_qemu.so libttscompat.so libttspico.so"
+DELETE_FONTS="MTLmr3m.ttf NanumGothic.ttf DroidSansFallback.ttf Padauk-book.ttf Padauk-bookbold.ttf LBhashitaComplexSans-Bold.ttf LBhashitaComplexSans-Regular.ttf"
+DELETE_MEDIA="*.qmg *.emd"
 
-# Optimize PNG resources in APKs
-( cd "$OUT"/system; find framework/ app/ priv-app/ vendor/app/ -name \*.apk -print | $XARGS "$OPTICHARGER"; )
+REPACK=$OUT/repack.d
+echo -e "Sanitizing Environment..."
+rm -rf $REPACK
+mkdir -p $REPACK
+echo -e
+
+# Unpack the otapackage and opticharge all apks
+mkdir $REPACK/ota
+(
+cd $REPACK/ota
+mkdir data
+mkdir data/app
+echo -e "Unpacking $OTAPACKAGE..."
+unzip $QUIET $OTAPACKAGE
+echo -e
+
+# Move all apks to the same directory so xargs can
+# use also with framework-res.apk. This allow process
+# framework-res.apk in parallel with other apks
+mkdir -p $REPACK/parallel
+cd $REPACK/parallel
+cp $REPACK/ota/system/framework/framework-res.apk .
+cp $REPACK/ota/system/app/*.apk .
+
+# Do optimization in parallel
+find ./ -name \*.apk | $XARGS $OPTICHARGER
+
+# Move optimized apks to repack directory
+mv -f $REPACK/parallel/framework-res.apk $REPACK/ota/system/framework/framework-res.apk
+mv -f $REPACK/parallel/*.apk $REPACK/ota/system/app/
+
+# Optimize /priv-app/
+cp $REPACK/ota/system/priv-app/*.apk .
+find ./ -name \*.apk | $XARGS $OPTICHARGER
+mv -f $REPACK/parallel/*.apk $REPACK/ota/system/priv-app/
+
+# Move user apks to data directory
+mv -f $REPACK/ota/system/priv-app/KernelTweaker.apk $REPACK/ota/data/app/KernelTweaker.apk
+mv -f $REPACK/ota/system/priv-app/NovaLauncher.apk $REPACK/ota/data/app/NovaLauncher.apk
+mv -f $REPACK/ota/system/priv-app/GalleryGoogle.apk $REPACK/ota/data/app/GalleryGoogle.apk
+mv -f $REPACK/ota/system/app/Term.apk $REPACK/ota/data/app/Term.apk
+
+# Return to directory
+cd $REPACK/ota
+rm -rf $REPACK/parallel
+)
+
+# Determine what to name the new signed package
+MODVERSION=`sed -n -e'/ro\.cm\.version/s/^.*=//p' $OUT/system/build.prop`
+# Check for '_' in product name
+if [ "`echo -e $TARGET_PRODUCT | cut -d '_' -f3`" != "" ]
+then
+TARGET_PRODUCT_FINAL=`echo -e $TARGET_PRODUCT | cut -d '_' -f2,3`
+else
+TARGET_PRODUCT_FINAL=`echo -e $TARGET_PRODUCT | cut -d '_' -f2`
+fi
+echo -e $CL_CYN"MODVERSION: $MODVERSION"$CL_RST
+OUTFILE=$OUT/"CM-"$MODVERSION.zip
 
 # Delete unnecessary binaries
-( cd "$OUT"/system/bin; echo $DELETE_BINS | xargs rm -f; )
-
-# We should fix the build to stop this from being installed in the first place
-rm -rf "$OUT"/system/extras
+( cd $REPACK/ota/system/bin; echo -e $DELETE_BINS | xargs rm -f; )
 
 # Delete unnecessary libraries
-( cd "$OUT"/system/lib; echo $DELETE_LIBS | xargs rm -f; )
+( cd $REPACK/ota/system/lib; echo -e $DELETE_LIBS | xargs rm -f; )
 
 # Delete Offline charging mode files
-( cd "$OUT"/system/media; echo $DELETE_MEDIA | xargs rm -f; )
-
-# No need for modem.bin
-rm -f "$OUT"/modem.bin
+( cd $REPACK/ota/system/media; echo -e $DELETE_MEDIA | xargs rm -f; )
 
 # No need for media/video
-rm -rf "$OUT"/system/media/video
+rm -rf $REPACK/ota/system/media/video
 
 # Delete Unnecessary Fonts
-( cd "$OUT"/system/fonts; echo $DELETE_FONTS | xargs rm -f; )
+( cd $REPACK/ota/system/fonts; echo -e $DELETE_FONTS | xargs rm -f; )
 
 # No need for tts
-rm -rf "$OUT"/system/tts
+rm -rf $REPACK/ota/system/tts
 
 # No need for srec
-rm -rf "$OUT"/system/usr/srec
+rm -rf $REPACK/ota/system/usr/srec
 
 # No need for recovery
-rm -rf "$OUT"/recovery
-rm -rf "$OUT"/system/etc/recovery-resource.dat
+rm -rf $REPACK/ota/recovery
+rm -rf $REPACK/ota/system/etc/recovery-resource.dat
+
+# Strip modules
+[ -d $REPACK/ota/system/lib/modules ] && \
+	find $REPACK/ota/system/lib/modules -name "*.ko" -print0 | xargs -0 arm-eabi-strip --strip-unneeded
+
+# Pack it up and sign
+echo -e "Zipping package..."
+( cd $REPACK/ota; zip $QUIET -r $REPACK/update.zip . )
+echo -e
+echo -e "Signing package..."
+SECURITYDIR=$ANDROID_BUILD_TOP/build/target/product/security
+java -Xmx1024m \
+	-jar $OUT/../../../host/$OUT_TARGET_HOST/framework/signapk.jar \
+	-w $SECURITYDIR/testkey.x509.pem $SECURITYDIR/testkey.pk8 \
+	$REPACK/update.zip $OUTFILE
+echo -e
+echo -e "Cleaning up..."
+rm -rf $REPACK
+echo -e
+
+# Create a md5 checksum image of the repacked package
+(
+img=`basename $OUTFILE`
+cd `dirname $OUTFILE`
+
+echo -e
+echo -e $CL_GRN"Package complete: $OUTFILE"$CL_RST
+echo -e
+)
 
 exit 0
+
+
+
