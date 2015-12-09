@@ -4,6 +4,9 @@ $(call inherit-product, vendor/cm/config/common.mk)
 # Include CM audio files
 include vendor/cm/config/cm_audio.mk
 
+# Bring in Evervolv a2sd and init.d scripts
+include vendor/cm/config/tools.mk 
+
 # Optional CM packages
 PRODUCT_PACKAGES += \
     Galaxy4 \
@@ -16,10 +19,3 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     PhotoTable
 
-PRODUCT_PACKAGES += \
-    VideoEditor \
-    libvideoeditor_jni \
-    libvideoeditor_core \
-    libvideoeditor_osal \
-    libvideoeditor_videofilters \
-    libvideoeditorplayer

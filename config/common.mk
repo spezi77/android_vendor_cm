@@ -79,10 +79,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.disable.power.collapse=0 \
     ro.vold.umsdirtyratio=20
 
+# Disable selinux
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1 \
+    ro.build.selinux=0
     persist.sys.root_access=1 \
     persist.sys.dun.override=0
+
+# Disable ADB authentication
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 
 # Backup Tool
 ifneq ($(WITH_GMS),true)
@@ -142,15 +146,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
 
-# Copy JNI libarary of Term
-PRODUCT_COPY_FILES +=  \
-    vendor/cm/proprietary/Term.apk:system/app/Term.apk \
-    vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so \
-    vendor/cm/prebuilt/hololauncherhd/HoloLauncherHD.apk:system/app/HoloLauncherHD.apk \
-    vendor/cm/prebuilt/Nova.apk:system/app/Nova.apk \
-    vendor/cm/prebuilt/appsetting.apk:system/app/appsetting.apk \
-    vendor/cm/prebuilt/xposed_installer.apk:system/app/xposed_installer.apk
-
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
     vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
@@ -198,14 +193,9 @@ PRODUCT_PACKAGES += \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
-    ScreenRecorder \
-    libscreenrecorder \
     BeanStalkPapers \
-    BeanStalkOTA \
-    Apollo \
     MonthCalendarWidget \
     LockClock \
-    DashClock \
     CMHome \
     StalkExplorer
 
