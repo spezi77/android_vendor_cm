@@ -3,9 +3,9 @@ PROP_PATH:= vendor/cm/prebuilt
 
 # Utilize init.d scripts
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/etc/init.d/04mountext:system/etc/init.d/04mountext \
-    $(LOCAL_PATH)/etc/init.d/26apps2sd:system/etc/init.d/26apps2sd \
-    $(LOCAL_PATH)/etc/init.d/27extgapps:system/etc/init.d/27extgapps
+    $(LOCAL_PATH)/etc/init.d/05mountext:system/etc/init.d/05mountext \
+    $(LOCAL_PATH)/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
+    $(LOCAL_PATH)/etc/init.d/20extgapps:system/etc/init.d/20extgapps
 
 # Additional files for HTC BRAVO
 PRODUCT_COPY_FILES += \
