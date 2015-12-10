@@ -71,6 +71,7 @@ mv -f $REPACK/parallel/*.apk $REPACK/ota/system/priv-app/
 # Move user apks to data directory
 mv -f $REPACK/ota/system/priv-app/NovaLauncher.apk $REPACK/ota/data/app/NovaLauncher.apk
 mv -f $REPACK/ota/system/app/Term.apk $REPACK/ota/data/app/Term.apk
+mv -f $REPACK/ota/system/app/BeanStalkPapers.apk $REPACK/ota/data/app/BeanStalkPapers.apk
 
 # Return to directory
 cd $REPACK/ota
