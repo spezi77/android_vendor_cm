@@ -82,7 +82,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Disable selinux
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=0
-    persist.sys.root_access=1 \
+    persist.sys.root_access=3 \
     persist.sys.dun.override=0
 
 # Disable ADB authentication
