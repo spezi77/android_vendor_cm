@@ -15,8 +15,7 @@ PRODUCT_PACKAGES += \
     Mms \
     Stk \
     CellBroadcastReceiver \
-    VoiceDialer \
-    WhisperPush
+    VoiceDialer
 
 # Enable CellBroadcastReceiver settings
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/phone
