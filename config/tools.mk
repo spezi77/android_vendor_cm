@@ -10,9 +10,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(PROP_PATH)/NovaLauncher.apk:system/priv-app/NovaLauncher.apk
 
-# KernelTweaker
+# KernelAdiutor
 PRODUCT_PACKAGES += \
-    KernelTweaker
+    KernelAdiutor
 PRODUCT_COPY_FILES += \
-    $(PROP_PATH)/KernelTweaker.apk:system/priv-app/KernelTweaker.apk
+    $(PROP_PATH)/KernelAdiutor.apk:system/priv-app/KernelAdiutor.apk
 
