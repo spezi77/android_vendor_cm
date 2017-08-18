@@ -89,7 +89,7 @@ else
 TARGET_PRODUCT_FINAL=`echo -e $TARGET_PRODUCT | cut -d '_' -f2`
 fi
 echo -e $CL_CYN"MODVERSION: $MODVERSION"$CL_RST
-OUTFILE=$OUT/"CM-"$MODVERSION.zip
+OUTFILE=$OUT/"lineage-"$MODVERSION.zip
 
 # Delete unnecessary binaries
 ( cd $REPACK/ota/system/bin; echo -e $DELETE_BINS | xargs rm -f; )
